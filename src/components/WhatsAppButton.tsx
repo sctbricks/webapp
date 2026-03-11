@@ -1,5 +1,5 @@
 export function getWhatsAppUrl(message: string) {
-    const phoneNumber = "911234567890"; // Replaced with a placeholder, real one would be in env
+    const phoneNumber = "916380213603"; // Replaced with a placeholder, real one would be in env
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 }

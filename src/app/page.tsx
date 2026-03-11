@@ -5,42 +5,89 @@ import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import WhatsAppButton, { getWhatsAppUrl } from "@/components/WhatsAppButton";
 
-const products = [
+const manufacturedProducts = [
   {
-    name: "Fly Ash Bricks",
-    image: "/images/fly-ash.png",
+    name: "Flyash Bricks",
+    image: "/images/flyash_bricks_1773246878607.png",
     description: "Eco-friendly bricks made from industrial byproducts. High strength and smooth finishing.",
     features: ["High compressive strength", "Uniform shape", "Eco-friendly", "Reduced plastering cost"]
   },
   {
-    name: "Premium Green Garden Pavers",
-    image: "/images/green-pavers.png",
-    description: "Highly durable interlocking green pavers, perfect for modern gardens and walkways.",
-    features: ["Stunning green aesthetic", "Crack resistant", "Eco-friendly materials", "Non-slip surface"]
+    name: "Interlock Bricks",
+    image: "/images/interlock_bricks_1773246928287.png",
+    description: "Interlocking bricks for high-durability flooring and pathways.",
+    features: ["Heavy load bearing", "Easy to install", "Reusable", "Aesthetic finish"]
   },
   {
-    name: "Hollow Concrete Blocks",
-    image: "/images/hollow-concrete.png",
+    name: "Solid Bricks (4\", 6\", 8\")",
+    image: "/images/solid_bricks_1773246964781.png",
+    description: "Solid, heavy-duty cement blocks designed for structural walls and boundary construction.",
+    features: ["Maximum durability", "Termite proof", "Low maintenance", "Multiple sizes"]
+  },
+  {
+    name: "Hollow Blocks (6\")",
+    image: "/images/hollow_blocks_1773247002492.png",
     description: "Lightweight yet strong blocks with air cavities for better insulation and faster construction.",
     features: ["Faster construction", "Excellent insulation", "Cost-effective", "Reduced weight"]
-  },
-  {
-    name: "Cement Blocks",
-    image: "/images/cement-blocks.png",
-    description: "Solid, heavy-duty cement blocks designed for structural walls and boundary construction.",
-    features: ["Maximum durability", "Termite proof", "Low maintenance", "Standard dimensions"]
-  },
-  {
-    name: "Paver Blocks",
-    image: "/images/paver-blocks.png",
-    description: "Interlocking blocks for high-durability flooring in driveways, walkways, and parking lots.",
-    features: ["Anti-skid surface", "Multiple designs", "Heavy load bearing", "Easy to replace"]
   }
 ];
 
+const dealerProducts = [
+  {
+    name: "M-Sand",
+    image: "/images/msand_pile_1773246182968.png",
+    description: "Manufactured sand specifically for concrete to achieve highest compressive strength.",
+    features: ["High strength", "Silt free", "Economical", "Well graded"]
+  },
+  {
+    name: "P-Sand",
+    image: "/images/psand_pile_1773246209081.png",
+    description: "Premium plastering sand designed for smooth internal and external wall finishes.",
+    features: ["Fine texture", "Smooth finishes", "No screening needed", "Reduced cracks"]
+  },
+  {
+    name: "1/2 Jalli",
+    image: "/images/jalli_half_1773246240267.png",
+    description: "1/2 inch blue metal crushed stone for high-grade concrete mixes.",
+    features: ["Cubical shape", "Strong bond", "Clean", "Dust free"]
+  },
+  {
+    name: "3/4 Jalli",
+    image: "/images/jalli_three_quarter_1773246304635.png",
+    description: "3/4 inch blue metal crushed stone for standard structural concrete.",
+    features: ["Perfect sizing", "High load-bearing", "Clean", "Consistent quality"]
+  },
+  {
+    name: "Dust",
+    image: "/images/dust_pile_1773246342930.png",
+    description: "Quarry dust for filling, leveling, and foundation works.",
+    features: ["Excellent compaction", "Cost-effective", "Fine particles", "Versatile"]
+  },
+  {
+    name: "Chips",
+    image: "/images/chips_pile_1773246385082.png",
+    description: "Stone chips tailored for various specialized construction requirements.",
+    features: ["Uniform size", "Decorative", "Durable", "Clean material"]
+  },
+  {
+    name: "Cements (All Brands)",
+    image: "/images/cement_bags_1773246425368.png",
+    description: "We provide all top leading brands of cement for all your construction needs.",
+    features: ["Top brands", "Fresh stock", "Best prices", "Bulk availability"]
+  },
+  {
+    name: "Red Stone",
+    image: "/images/red-clay.png",
+    description: "Natural high-quality red stones perfect for traditional aesthetic building.",
+    features: ["Natural color", "High strength", "Weather resistant", "Classic look"]
+  }
+];
+
+const allProducts = [...manufacturedProducts, ...dealerProducts];
+
 export default function Home() {
   const [quoteData, setQuoteData] = useState({
-    product: "Fly Ash Bricks",
+    product: "Flyash Bricks",
     quantity: "",
     location: ""
   });
@@ -56,9 +103,12 @@ export default function Home() {
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl font-black text-brand-primary tracking-tighter">SCT</span>
-            <span className="text-2xl font-light text-brand-secondary">BRICKS</span>
+          <div className="flex items-center space-x-3">
+            <Image src="/images/PHOTO-2025-11-28-17-35-34-removebg-preview.png" alt="SCT Bricks Logo" width={48} height={48} className="w-12 h-12 rounded-full object-cover shadow-sm" />
+            <div className="flex flex-col mt-1">
+              <span className="text-xl leading-none font-black text-brand-primary tracking-tighter">SCT</span>
+              <span className="text-sm leading-none font-light text-brand-secondary tracking-widest mt-0.5">BRICKS</span>
+            </div>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#about" className="text-sm font-medium hover:text-brand-primary transition-colors">About</a>
@@ -84,7 +134,7 @@ export default function Home() {
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero.png"
+            src="/images/new_hero_bg_1773248222668.png"
             alt="Construction backdrop"
             fill
             className="object-cover opacity-10"
@@ -102,7 +152,7 @@ export default function Home() {
               Building the Future with <span className="text-brand-primary italic">SCT Bricks</span>
             </h1>
             <p className="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
-              Premium quality Fly Ash bricks, green garden pavers, and eco-friendly concrete blocks for sustainable construction. Durable, green, and delivered on time.
+              Leading suppliers of premium Flyash Bricks, M-Sand, P-Sand, Cement, Jalli, and Concrete Blocks. High-strength materials designed for sustainable, long-lasting construction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <WhatsAppButton
@@ -117,7 +167,7 @@ export default function Home() {
           </div>
           <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform md:rotate-2 hover:rotate-0 transition-transform duration-500">
             <Image
-              src="/images/hero.png"
+              src="/images/new_hero_bg_1773248222668.png"
               alt="Premium Quality Bricks"
               fill
               className="object-cover"
@@ -148,7 +198,7 @@ export default function Home() {
             </div>
             <div className="relative h-[550px] bg-brand-secondary rounded-3xl overflow-hidden group shadow-2xl">
               <Image
-                src="/images/fly-ash.png"
+                src="/images/production_yard_1773248410390.png"
                 alt="Production"
                 fill
                 className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-1000"
@@ -169,12 +219,55 @@ export default function Home() {
       <section id="products" className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-brand-secondary mb-4">Our Product Catalog</h2>
+            <h2 className="text-4xl font-bold text-brand-secondary mb-4">Our Manufactured Products</h2>
             <div className="w-16 h-1.5 bg-brand-primary mx-auto mb-6 rounded-full"></div>
             <p className="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">Explore our range of premium construction materials designed for strength, durability, and cost-efficiency.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {products.map((product) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {manufacturedProducts.map((product) => (
+              <ProductCard key={product.name} {...product} />
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section id="process" className="py-24 bg-brand-light/30">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-brand-secondary mb-4">Our Manufacturing Process</h2>
+            <div className="w-16 h-1.5 bg-brand-primary mx-auto mb-6 rounded-full"></div>
+            <p className="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">A systematic approach to creating industry-leading construction materials through precision engineering.</p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8 relative">
+            <div className="absolute top-[4.5rem] left-0 w-full h-0.5 bg-gray-100 hidden md:block z-0"></div>
+            {[
+              { step: "01", title: "Material Processing", desc: "Rigorous quality checks on fly ash, cement, and aggregates." },
+              { step: "02", title: "Precision Mixing", desc: "Automated batching plants ensure exact mix proportions." },
+              { step: "03", title: "High-Pressure Molding", desc: "Hydraulic presses create perfectly shaped, high-density blocks." },
+              { step: "04", title: "Curing & Dispatch", desc: "Optimal water curing for max strength before delivery." }
+            ].map((s, i) => (
+              <div key={i} className="relative z-10 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow group">
+                <div className="w-20 h-20 bg-brand-light text-brand-primary font-black text-2xl rounded-2xl flex items-center justify-center mb-8 mx-auto border-4 border-white shadow-sm group-hover:-translate-y-2 transition-transform">{s.step}</div>
+                <h4 className="font-bold text-center text-xl mb-3 text-brand-secondary">{s.title}</h4>
+                <p className="text-center text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dealer Products Section */}
+      <section id="dealer-products" className="py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-brand-secondary mb-4">Materials We Supply (Dealers)</h2>
+            <div className="w-16 h-1.5 bg-brand-primary mx-auto mb-6 rounded-full"></div>
+            <p className="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">We are trusted dealers of high-quality raw materials sourced for top-tier construction.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {dealerProducts.map((product) => (
               <ProductCard key={product.name} {...product} />
             ))}
           </div>
@@ -217,7 +310,7 @@ export default function Home() {
                     value={quoteData.product}
                     onChange={(e) => setQuoteData({ ...quoteData, product: e.target.value })}
                   >
-                    {products.map(p => <option key={p.name} value={p.name} className="bg-brand-secondary">{p.name}</option>)}
+                    {allProducts.map(p => <option key={p.name} value={p.name} className="bg-brand-secondary">{p.name}</option>)}
                   </select>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -257,58 +350,58 @@ export default function Home() {
       </section>
 
       {/* Testimonials / Reviews Section */}
-      <section id="reviews" className="py-24 bg-white overflow-hidden">
+      <section id="reviews" className="py-24 bg-brand-light/50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
-              <h2 className="text-4xl font-bold text-brand-secondary mb-4">What Our Clients Say</h2>
+              <h2 className="text-4xl font-bold text-brand-secondary mb-4">Review Us</h2>
               <div className="w-16 h-1.5 bg-brand-primary mb-6 rounded-full"></div>
-              <p className="text-gray-600 text-lg">We take pride in our quality and service. Here's feedback from builders and homeowners who trust SCT Bricks.</p>
+              <p className="text-gray-600 text-lg">We take pride in our quality and service. Please leave a review to share your experience with SCT Bricks.</p>
             </div>
-            <a
-              href="https://69b0326f06aae500083ea22f--linklaneapp.netlify.app/shrichinnamantraders/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-bold border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all group"
-            >
-              Submit Your Review
-              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-            </a>
+            <div className="flex flex-col items-center md:items-end gap-3">
+              <a
+                href="https://linklane.in/shrichinnammantraders/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full font-bold border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all group"
+              >
+                Submit your review
+                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+              </a>
+              <a href="https://linklane.in" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">
+                Powered by <span className="font-bold text-gray-600">Linklane.in</span>
+              </a>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-brand-light/20">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-brand-secondary mb-4">Frequently Asked Questions</h2>
+            <div className="w-16 h-1.5 bg-brand-primary mx-auto mb-6 rounded-full"></div>
+            <p className="text-gray-600 text-lg">Got questions? We've got answers to help you make the best choice for your construction needs.</p>
+          </div>
+          <div className="space-y-4">
             {[
-              {
-                name: "Rajesh Kumar",
-                role: "Proprietor, RK Constructions",
-                content: "SCT Bricks provides the most consistent quality fly ash bricks in Erode. Their dimensions are perfect, which saved us a lot on mortar and plastering.",
-                rating: 5
-              },
-              {
-                name: "Anitha Selvam",
-                role: "Homeowner",
-                content: "Highly impressed with the strength of their blocks. The delivery was right on time for our house warming project. Highly recommended!",
-                rating: 5
-              },
-              {
-                name: "Suresh Mani",
-                role: "Civil Engineer",
-                content: "As an engineer, I focus on compressive strength. SCT Bricks exceeded our lab test requirements. Great eco-friendly alternative to red bricks.",
-                rating: 5
-              }
-            ].map((review, idx) => (
-              <div key={idx} className="p-8 rounded-3xl bg-brand-light border border-gray-100 flex flex-col shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex text-brand-accent mb-4">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
+              { q: "Why choose Fly Ash bricks over traditional Red bricks?", a: "Fly Ash bricks offer superior compressive strength, perfect uniform shapes, lower water absorption, and are completely eco-friendly as they use industrial byproducts instead of vital topsoil." },
+              { q: "Do you supply materials for large commercial projects?", a: "Absolutely. We supply both retail and bulk wholesale orders. Our large-scale production yard ensures we can meet demands for massive infrastructure or commercial builds easily." },
+              { q: "What is your typical delivery timeframe?", a: "For standard orders within Erode and near surrounding areas, we usually process and dispatch within 24-48 hours. Large bulk quantities can be scheduled according to project pace." },
+              { q: "Can I get a custom quote for mixed materials?", a: "Yes! You can use our WhatsApp quoting tool on this site, or contact our sales team directly to bundle bricks, m-sand, and cement for the best comprehensive pricing." }
+            ].map((faq, i) => (
+              <details key={i} className="group bg-white rounded-3xl border border-gray-100 shadow-sm text-brand-secondary [&_summary::-webkit-details-marker]:hidden overflow-hidden">
+                <summary className="cursor-pointer p-6 md:p-8 font-bold text-lg flex items-center justify-between gap-4 select-none hover:text-brand-primary transition-colors">
+                  {faq.q}
+                  <div className="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center shrink-0 group-open:bg-brand-primary transition-colors">
+                    <svg className="w-5 h-5 transition-transform group-open:-rotate-180 text-brand-primary group-open:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                  </div>
+                </summary>
+                <div className="px-6 md:px-8 pb-8 text-gray-600 leading-relaxed text-lg">
+                  {faq.a}
                 </div>
-                <p className="text-gray-600 mb-8 italic flex-grow">"{review.content}"</p>
-                <div className="mt-auto">
-                  <h4 className="font-bold text-brand-secondary">{review.name}</h4>
-                  <p className="text-sm text-gray-500">{review.role}</p>
-                </div>
-              </div>
+              </details>
             ))}
           </div>
         </div>
@@ -329,7 +422,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-brand-secondary text-xl mb-1">Factory Address</h4>
-                    <p className="text-gray-600">SCT Bricks, Near Highway Junction, <br />Erode, Tamil Nadu - 638001</p>
+                    <p className="text-gray-600">Shrii Chinnamman Trader, <br />Perundurai Rd, opp. to Nandha Medical College, <br />Erode, Tamil Nadu 638052</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
@@ -338,7 +431,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-brand-secondary text-xl mb-1">Phone Number</h4>
-                    <p className="text-gray-600">+91 98765 43210</p>
+                    <p className="text-gray-600">+91 6380 213 603</p>
                   </div>
                 </div>
               </div>
@@ -371,20 +464,30 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 text-center md:text-left">
             <div>
-              <div className="flex items-center justify-center md:justify-start space-x-2 mb-8">
-                <span className="text-4xl font-black text-brand-primary tracking-tighter italic">SCT</span>
-                <span className="text-4xl font-light text-white tracking-widest">BRICKS</span>
+              <div className="flex items-center justify-center md:justify-start space-x-4 mb-8">
+                <Image src="/images/PHOTO-2025-11-28-17-35-34-removebg-preview.png" alt="SCT Bricks Logo" width={64} height={64} className="w-16 h-16 rounded-full object-cover shadow-lg border-2 border-white/10" />
+                <div className="flex flex-col text-left mt-1">
+                  <span className="text-3xl leading-none font-black text-brand-primary tracking-tighter italic">SCT</span>
+                  <span className="text-xl leading-none font-light text-white tracking-widest mt-1">BRICKS</span>
+                </div>
               </div>
-              <p className="text-white/40 max-w-sm mb-8 text-lg mx-auto md:mx-0">
-                Premium construction materials for lasting foundations. Building Tamil Nadu since 2015.
-              </p>
-              <div className="flex justify-center md:justify-start gap-4">
-                {['WhatsApp', 'Instagram', 'Facebook'].map(s => (
-                  <a key={s} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-primary hover:border-brand-primary transition-all duration-300">
-                    <span className="sr-only">{s}</span>
-                    <div className="w-5 h-5 bg-white/20 rounded-sm"></div>
-                  </a>
-                ))}
+              <div className="flex flex-col gap-4 mb-8">
+                <a
+                  href="https://www.justdial.com/Erode/Sct-Bricks-Opposite-Nandha-Medical-College-Mettukadai/9999PX424-X424-231118130951-K9V5_BZDET"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center md:justify-start gap-3 w-fit mx-auto md:mx-0 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
+                >
+                  <span className="font-bold text-white group-hover:text-brand-primary transition-colors">View on Justdial</span>
+                </a>
+                <a
+                  href="https://linklane.in/shrichinnammantraders"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center md:justify-start gap-3 w-fit mx-auto md:mx-0 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
+                >
+                  <span className="font-bold text-white group-hover:text-brand-primary transition-colors">View on Linklane.in</span>
+                </a>
               </div>
             </div>
 
@@ -411,11 +514,15 @@ export default function Home() {
           </div>
 
           <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-white/20 gap-6">
-            <p>© {new Date().getFullYear()} SCT Bricks. Designed for Excellence.</p>
-            <div className="flex gap-10">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Cookies</a>
+            <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+              <p>© {new Date().getFullYear()} SCT Bricks. Designed for Excellence.</p>
+              <span className="hidden md:inline text-white/10">|</span>
+              <a href="https://linklane.in" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors group">
+                Verified Business of
+                <span className="font-bold text-white/50 group-hover:text-white transition-colors bg-white/10 px-2 py-1 rounded-md">
+                  Linklane.in
+                </span>
+              </a>
             </div>
           </div>
         </div>
