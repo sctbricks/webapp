@@ -28,8 +28,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: product.description,
       images: [{ url: product.image }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} - SCT Bricks`,
+      description: product.description,
+      images: [product.image],
+    },
   };
 }
+
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;

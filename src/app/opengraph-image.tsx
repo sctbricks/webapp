@@ -31,10 +31,6 @@ export default async function Image() {
         }}
       >
         <img
-           // Using an absolute path or a public URL if possible, 
-           // but Next.js OG images can access public folder via URL in some environments
-           // Here we'll try to use the logo image. 
-           // For local dev/preview, we can point to the public dir.
           src="https://sctbricks.com/images/PHOTO-2025-11-28-17-35-34-removebg-preview.png"
           alt="SCT Bricks"
           style={{
@@ -45,6 +41,7 @@ export default async function Image() {
             boxShadow: '0 20px 50px rgba(0,0,0,0.1)',
           }}
         />
+
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <span style={{ 
             fontWeight: 900, 

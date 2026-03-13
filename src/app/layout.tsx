@@ -19,10 +19,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  icons: {
-    icon: "/images/Untitled design (18).png",
-    apple: "/images/Untitled design (18).png",
-  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -37,6 +33,7 @@ export const metadata: Metadata = {
     description: "Reliable, eco-friendly construction materials including Flyash, M-Sand, P-Sand, Cement & more in Erode.",
   },
 };
+
 
 
 export default function RootLayout({
