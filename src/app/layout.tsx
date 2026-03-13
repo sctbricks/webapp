@@ -8,6 +8,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://sctbricks.com'),
   title: "SCT Bricks – Eco-Friendly Construction Materials Supplier",
   description: "SCT Bricks supplies high-quality fly ash bricks, premium green pavers, concrete blocks, paver blocks, m-sand, p-sand, jalli, and cement. Reliable, eco-friendly materials for builders & contractors in Erode, Tamil Nadu.",
   keywords: ["SCT Bricks", "Fly Ash Bricks", "Interlock Bricks", "Solid Bricks", "Hollow Blocks", "M-Sand", "P-Sand", "Jalli", "Construction Materials", "Cement", "Erode Bricks Supplier"],
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   publisher: "SCT Bricks",
   robots: "index, follow",
   alternates: {
-    canonical: "https://sctbricks.com",
+    canonical: "/",
   },
   icons: {
     icon: "/images/Untitled design (18).png",
@@ -26,26 +27,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://sctbricks.com",
-
     siteName: "SCT Bricks",
     title: "SCT Bricks – Eco-Friendly Construction Materials Supplier in Erode",
     description: "SCT Bricks supplies high-quality fly ash bricks, premium green pavers, concrete blocks, paver blocks, m-sand, p-sand, jalli, and cement.",
-    images: [
-      {
-        url: "/images/PHOTO-2025-11-28-17-35-34-removebg-preview.png",
-        width: 800,
-        height: 600,
-        alt: "SCT Bricks Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SCT Bricks – Premium Construction Materials",
     description: "Reliable, eco-friendly construction materials including Flyash, M-Sand, P-Sand, Cement & more in Erode.",
-    images: ["/images/PHOTO-2025-11-28-17-35-34-removebg-preview.png"],
   },
 };
+
 
 export default function RootLayout({
   children,
