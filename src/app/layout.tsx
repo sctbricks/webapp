@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   publisher: "SCT Bricks",
   robots: "index, follow",
   alternates: {
-    canonical: "https://sctbricks.in",
+    canonical: "https://sctbricks.com",
   },
   icons: {
     icon: "/images/Untitled design (18).png",
@@ -25,7 +25,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://sctbricks.in",
+    url: "https://sctbricks.com",
+
     siteName: "SCT Bricks",
     title: "SCT Bricks – Eco-Friendly Construction Materials Supplier in Erode",
     description: "SCT Bricks supplies high-quality fly ash bricks, premium green pavers, concrete blocks, paver blocks, m-sand, p-sand, jalli, and cement.",

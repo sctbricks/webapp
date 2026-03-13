@@ -1,19 +1,21 @@
+import Link from "next/link";
 import Image from "next/image";
 import WhatsAppButton from "./WhatsAppButton";
 
 interface ProductCardProps {
     name: string;
+    slug: string;
     image: string;
     description: string;
     features: string[];
 }
 
-export default function ProductCard({ name, image, description, features }: ProductCardProps) {
+export default function ProductCard({ name, slug, image, description, features }: ProductCardProps) {
     const whatsappMessage = `Hello, I am interested in ${name}. Please share price and delivery details.`;
 
     return (
         <div className="flex flex-col h-full overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-sm transition-all duration-300 product-card-hover group">
-            <div className="relative h-64 w-full overflow-hidden bg-gray-100">
+            <Link href={`/products/${slug}`} className="relative h-64 w-full overflow-hidden bg-gray-100 block">
                 <Image
                     src={image}
                     alt={name}
@@ -21,12 +23,15 @@ export default function ProductCard({ name, image, description, features }: Prod
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-            </div>
+            </Link>
 
             <div className="flex flex-col flex-grow p-6">
-                <h3 className="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-primary transition-colors">
-                    {name}
-                </h3>
+                <Link href={`/products/${slug}`}>
+                    <h3 className="text-xl font-bold text-brand-secondary mb-3 group-hover:text-brand-primary transition-colors">
+                        {name}
+                    </h3>
+                </Link>
+
 
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2 md:line-clamp-none">
                     {description}
