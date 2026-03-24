@@ -18,7 +18,7 @@ export default function ProductCard({ name, slug, image, description, features }
             <Link href={`/products/${slug}`} className="relative h-64 w-full overflow-hidden bg-gray-100 block">
                 <Image
                     src={image}
-                    alt={name}
+                    alt={`${name} by SCT Bricks in Erode`}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />

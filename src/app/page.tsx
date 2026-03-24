@@ -14,6 +14,29 @@ export default function Home() {
     quantity: "",
     location: ""
   });
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "SCT Bricks",
+    url: "https://sctbricks.com",
+    telephone: ["+91 6380 213 603", "+91 84285 60078"],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+91 6380 213 603",
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["en", "ta"],
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+91 84285 60078",
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["en", "ta"],
+      },
+    ],
+  };
 
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,6 +46,10 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -69,13 +96,13 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-brand-primary uppercase bg-brand-primary/10 rounded-full">
-              Leading Bricks Supplier in Erode
+              LEADING BRICKS MANUFACTURER AND SUPPLIER IN ERODE
             </div>
             <h1 className="text-5xl md:text-7xl font-black text-brand-secondary leading-tight mb-8">
               Building the Future with <span className="text-brand-primary italic">SCT Bricks</span>
             </h1>
             <p className="text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
-              Leading suppliers of premium Flyash Bricks, M-Sand, P-Sand, Cement, Jalli, and Concrete Blocks. High-strength materials designed for sustainable, long-lasting construction.
+              Leading Manufacturer and suppliers of Premium Flyash Bricks, Interlock Bricks,Solid & Hollow bricks, M-Sand, P-Sand, Cement, Jalli, and Other Aggregates. High-strength materials and Eco bricks designed for sustainable, long-lasting construction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <WhatsAppButton
@@ -106,7 +133,7 @@ export default function Home() {
             <div className="space-y-8">
               <h2 className="text-4xl font-bold text-brand-secondary">Quality Reliability & Growth</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
-                At SCT Bricks, we are committed to providing the foundation for your dreams. With years of experience in construction materials, we specialize in high-strength Fly Ash bricks that are not only durable but also eco-friendly.
+                We specialize in high-strength Fly Ash bricks and Interlock Bricks that are Durable and also Eco-friendly.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="p-8 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-center">
@@ -355,7 +382,17 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-brand-secondary text-xl mb-1">Phone Number</h4>
-                    <p className="text-gray-600">+91 6380 213 603</p>
+                    <a href="tel:+916380213603" className="block text-gray-600 hover:text-brand-primary transition-colors">+91 6380 213 603</a>
+                    <a href="tel:+918428560078" className="block text-gray-600 hover:text-brand-primary transition-colors">+91 84285 60078</a>
+                    <a
+                      href="/sct-bricks-contact.vcf"
+                      download
+                      title="Save SCT Bricks contact card with both phone numbers"
+                      aria-label="Save SCT Bricks contact card with both phone numbers"
+                      className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-sm font-semibold rounded-xl border border-brand-primary/20 text-brand-primary bg-white hover:bg-brand-primary/5 transition-colors"
+                    >
+                      Save SCT Bricks Contact
+                    </a>
                   </div>
                 </div>
               </div>

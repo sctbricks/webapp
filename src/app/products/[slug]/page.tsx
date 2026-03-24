@@ -19,20 +19,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = allProducts.find((p) => p.slug === slug);
   if (!product) return {};
+  const productUrl = `https://sctbricks.com/products/${product.slug}`;
+  const seoDescription = `${product.description} Available from SCT Bricks, leading bricks manufacturer and supplier in Erode, Tamil Nadu.`;
+  const imageAlt = `${product.name} supplied by SCT Bricks in Erode`;
+  const productImages = product.galleryImages?.length ? product.galleryImages : [product.image];
 
   return {
-    title: `${product.name} - SCT Bricks`,
-    description: product.description,
+    title: `${product.name} in Erode | SCT Bricks`,
+    description: seoDescription,
+    keywords: [
+      product.name,
+      `${product.name} in Erode`,
+      "SCT Bricks",
+      "Bricks manufacturer in Erode",
+      "Bricks supplier in Erode",
+      "Tamil Nadu construction materials",
+    ],
+    alternates: {
+      canonical: productUrl,
+    },
     openGraph: {
-      title: `${product.name} - SCT Bricks`,
-      description: product.description,
-      images: [{ url: product.image }],
+      title: `${product.name} in Erode | SCT Bricks`,
+      description: seoDescription,
+      url: productUrl,
+      type: "website",
+      images: productImages.map((img) => ({ url: img, alt: imageAlt })),
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.name} - SCT Bricks`,
-      description: product.description,
-      images: [product.image],
+      title: `${product.name} in Erode | SCT Bricks`,
+      description: seoDescription,
+      images: productImages,
     },
   };
 }
@@ -47,9 +64,37 @@ export default async function ProductPage({ params }: Props) {
   }
 
   const whatsappMessage = `Hello SCT Bricks, I'm interested in ${product.name}. Please share more details and pricing.`;
+  const productUrl = `https://sctbricks.com/products/${product.slug}`;
+  const productImages = product.galleryImages?.length ? product.galleryImages : [product.image];
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: productImages.map((img) => `https://sctbricks.com${img}`),
+    brand: {
+      "@type": "Brand",
+      name: "SCT Bricks",
+    },
+    category: "Construction Material",
+    url: productUrl,
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "INR",
+      seller: {
+        "@type": "Organization",
+        name: "SCT Bricks",
+      },
+    },
+  };
 
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       {/* Navbar with Back Link */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -70,14 +115,30 @@ export default async function ProductPage({ params }: Props) {
       <div className="pt-32 pb-20 max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
-          <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-            />
+          <div className="space-y-4">
+            <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+              <Image
+                src={product.image}
+                alt={`${product.name} supplied by SCT Bricks in Erode`}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            {productImages.length > 1 && (
+              <div className="grid grid-cols-2 gap-4">
+                {productImages.slice(1).map((img) => (
+                  <div key={img} className="relative h-40 rounded-2xl overflow-hidden border border-gray-100">
+                    <Image
+                      src={img}
+                      alt={`${product.name} product stock at SCT Bricks, Erode`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}

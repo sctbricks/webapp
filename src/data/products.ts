@@ -1,4 +1,13 @@
-export const manufacturedProducts = [
+export type Product = {
+  name: string;
+  slug: string;
+  image: string;
+  description: string;
+  features: string[];
+  galleryImages?: string[];
+};
+
+export const manufacturedProducts: Product[] = [
   {
     name: "Flyash Bricks",
     slug: "flyash-bricks",
@@ -9,15 +18,19 @@ export const manufacturedProducts = [
   {
     name: "Interlock Bricks",
     slug: "interlock-bricks",
-    image: "/images/interlock_bricks_1773246928287.png",
-    description: "Interlocking bricks for high-durability flooring and pathways.",
+    image: "/images/interlock-bricks-erode-high-strength.jpg",
+    description: "High-strength interlock bricks for durable, eco-friendly flooring, pathways, and outdoor paving.",
     features: ["Heavy load bearing", "Easy to install", "Reusable", "Aesthetic finish"]
   },
   {
     name: "Solid Bricks (4\", 6\", 8\")",
     slug: "solid-bricks",
-    image: "/images/solid_bricks_1773246964781.png",
-    description: "Solid, heavy-duty cement blocks designed for structural walls and boundary construction.",
+    image: "/images/solid-bricks-erode-premium-stack.jpg",
+    galleryImages: [
+      "/images/solid-bricks-erode-premium-stack.jpg",
+      "/images/solid-bricks-erode-pallet-stock.jpg"
+    ],
+    description: "High-strength solid bricks (4\", 6\", 8\") for durable structural walls, compound walls, and long-lasting construction in Erode.",
     features: ["Maximum durability", "Termite proof", "Low maintenance", "Multiple sizes"]
   },
   {
@@ -29,7 +42,7 @@ export const manufacturedProducts = [
   }
 ];
 
-export const dealerProducts = [
+export const dealerProducts: Product[] = [
   {
     name: "M-Sand",
     slug: "m-sand",
@@ -40,7 +53,7 @@ export const dealerProducts = [
   {
     name: "P-Sand",
     slug: "p-sand",
-    image: "/images/psand_pile_1773246209081.png",
+    image: "/images/p-sand-erode-triple-wash-plaster-sand.jpg",
     description: "Premium plastering sand designed for smooth internal and external wall finishes.",
     features: ["Fine texture", "Smooth finishes", "No screening needed", "Reduced cracks"]
   },
@@ -68,7 +81,7 @@ export const dealerProducts = [
   {
     name: "Chips",
     slug: "chips",
-    image: "/images/chips_pile_1773246385082.png",
+    image: "/images/chips-erode-construction-aggregates.jpg",
     description: "Stone chips tailored for various specialized construction requirements.",
     features: ["Uniform size", "Decorative", "Durable", "Clean material"]
   },
