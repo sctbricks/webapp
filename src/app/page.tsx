@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import WhatsAppButton, { getWhatsAppUrl } from "@/components/WhatsAppButton";
@@ -37,6 +38,23 @@ export default function Home() {
       },
     ],
   };
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "SCT Bricks",
+    url: "https://sctbricks.com",
+  };
+  const siteNavigationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      { "@type": "SiteNavigationElement", position: 1, name: "Home", url: "https://sctbricks.com/" },
+      { "@type": "SiteNavigationElement", position: 2, name: "About", url: "https://sctbricks.com/about" },
+      { "@type": "SiteNavigationElement", position: 3, name: "Services", url: "https://sctbricks.com/services" },
+      { "@type": "SiteNavigationElement", position: 4, name: "Contact", url: "https://sctbricks.com/contact" },
+      { "@type": "SiteNavigationElement", position: 5, name: "Products", url: "https://sctbricks.com/#products" },
+    ],
+  };
 
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,6 +68,14 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
+      />
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -61,10 +87,10 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-sm font-medium hover:text-brand-primary transition-colors">About</a>
+            <Link href="/about" className="text-sm font-medium hover:text-brand-primary transition-colors">About</Link>
             <a href="#products" className="text-sm font-medium hover:text-brand-primary transition-colors">Products</a>
-            <a href="#why-us" className="text-sm font-medium hover:text-brand-primary transition-colors">Why Choose Us</a>
-            <a href="#reviews" className="text-sm font-medium hover:text-brand-primary transition-colors">Reviews</a>
+            <Link href="/services" className="text-sm font-medium hover:text-brand-primary transition-colors">Services</Link>
+            <Link href="/contact" className="text-sm font-medium hover:text-brand-primary transition-colors">Contact</Link>
             <WhatsAppButton
               message="Hello SCT Bricks, I'm visiting your website and would like to enquire about your products."
               label="Contact Now"
@@ -456,19 +482,19 @@ export default function Home() {
               <div>
                 <h5 className="font-bold mb-6 uppercase tracking-[0.2em] text-xs text-white/30">Explore</h5>
                 <ul className="space-y-4 text-white/50">
-                  <li><a href="#" className="hover:text-brand-primary transition-colors">Home</a></li>
-                  <li><a href="#about" className="hover:text-brand-primary transition-colors">Process</a></li>
-                  <li><a href="#products" className="hover:text-brand-primary transition-colors">Bulk Orders</a></li>
-                  <li><a href="#why-us" className="hover:text-brand-primary transition-colors">Sustainability</a></li>
+                  <li><Link href="/" className="hover:text-brand-primary transition-colors">Home</Link></li>
+                  <li><Link href="/about" className="hover:text-brand-primary transition-colors">About</Link></li>
+                  <li><Link href="/services" className="hover:text-brand-primary transition-colors">Services</Link></li>
+                  <li><a href="#products" className="hover:text-brand-primary transition-colors">Products</a></li>
                 </ul>
               </div>
               <div>
                 <h5 className="font-bold mb-6 uppercase tracking-[0.2em] text-xs text-white/30">Support</h5>
                 <ul className="space-y-4 text-white/50">
-                  <li><a href="#" className="hover:text-brand-primary transition-colors">Contact</a></li>
-                  <li><a href="#" className="hover:text-brand-primary transition-colors">Directions</a></li>
-                  <li><a href="#" className="hover:text-brand-primary transition-colors">Pricing</a></li>
-                  <li><a href="#" className="hover:text-brand-primary transition-colors">FAQ</a></li>
+                  <li><Link href="/contact" className="hover:text-brand-primary transition-colors">Contact</Link></li>
+                  <li><a href="https://maps.google.com/?q=Shrii+Chinnamman+Trader+Erode" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-colors">Directions</a></li>
+                  <li><Link href="/contact" className="hover:text-brand-primary transition-colors">Pricing</Link></li>
+                  <li><Link href="/#faq" className="hover:text-brand-primary transition-colors">FAQ</Link></li>
                 </ul>
               </div>
             </div>
