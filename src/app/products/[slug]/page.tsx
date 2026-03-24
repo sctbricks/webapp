@@ -45,7 +45,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: seoTitle,
       description: seoDescription,
       url: productUrl,
-      type: "product",
+      // Next.js Metadata typing does not currently accept "product" for openGraph.type.
+      // Keep product semantics via Product schema JSON-LD rendered on the page.
+      type: "website",
       images: [{ url: ogImageUrl, alt: imageAlt }],
     },
     twitter: {
