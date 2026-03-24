@@ -20,12 +20,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = allProducts.find((p) => p.slug === slug);
   if (!product) return {};
   const productUrl = `https://sctbricks.com/products/${product.slug}`;
-  const seoDescription = `${product.description} Available from SCT Bricks, leading bricks manufacturer and supplier in Erode, Tamil Nadu.`;
+  const seoTitle = product.ogTitle ?? `${product.name} Supplier in Erode | SCT Bricks`;
+  const seoDescription =
+    product.ogDescription ??
+    `${product.description} Bulk supply available from SCT Bricks in Erode and Coimbatore, Tamil Nadu.`;
   const imageAlt = `${product.name} supplied by SCT Bricks in Erode`;
-  const productImages = product.galleryImages?.length ? product.galleryImages : [product.image];
+  const ogImageUrl = `${productUrl}/opengraph-image`;
 
   return {
-    title: `${product.name} in Erode | SCT Bricks`,
+    title: seoTitle,
     description: seoDescription,
     keywords: [
       product.name,
@@ -39,17 +42,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: productUrl,
     },
     openGraph: {
-      title: `${product.name} in Erode | SCT Bricks`,
+      title: seoTitle,
       description: seoDescription,
       url: productUrl,
-      type: "website",
-      images: productImages.map((img) => ({ url: img, alt: imageAlt })),
+      type: "product",
+      images: [{ url: ogImageUrl, alt: imageAlt }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.name} in Erode | SCT Bricks`,
+      title: seoTitle,
       description: seoDescription,
-      images: productImages,
+      images: [ogImageUrl],
     },
   };
 }

@@ -15,29 +15,24 @@ export default function Home() {
     quantity: "",
     location: ""
   });
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "SCT Bricks",
-    url: "https://sctbricks.com",
-    telephone: ["+91 6380 213 603", "+91 84285 60078"],
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        telephone: "+91 6380 213 603",
-        contactType: "sales",
-        areaServed: "IN",
-        availableLanguage: ["en", "ta"],
-      },
-      {
-        "@type": "ContactPoint",
-        telephone: "+91 84285 60078",
-        contactType: "sales",
-        areaServed: "IN",
-        availableLanguage: ["en", "ta"],
-      },
-    ],
-  };
+  const faqs = [
+    {
+      q: "Why choose Fly Ash bricks over traditional Red bricks?",
+      a: "Fly Ash bricks offer superior compressive strength, perfect uniform shapes, lower water absorption, and are completely eco-friendly as they use industrial byproducts instead of vital topsoil.",
+    },
+    {
+      q: "Do you supply materials for large commercial projects?",
+      a: "Absolutely. We supply both retail and bulk wholesale orders. Our large-scale production yard ensures we can meet demands for massive infrastructure or commercial builds easily.",
+    },
+    {
+      q: "What is your typical delivery timeframe?",
+      a: "For standard orders within Erode and near surrounding areas, we usually process and dispatch within 24-48 hours. Large bulk quantities can be scheduled according to project pace.",
+    },
+    {
+      q: "Can I get a custom quote for mixed materials?",
+      a: "Yes! You can use our WhatsApp quoting tool on this site, or contact our sales team directly to bundle bricks, m-sand, and cement for the best comprehensive pricing.",
+    },
+  ];
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -55,6 +50,18 @@ export default function Home() {
       { "@type": "SiteNavigationElement", position: 5, name: "Products", url: "https://sctbricks.com/#products" },
     ],
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
 
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,15 +73,15 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-gray-100">
@@ -362,12 +369,7 @@ export default function Home() {
 
           </div>
           <div className="space-y-4">
-            {[
-              { q: "Why choose Fly Ash bricks over traditional Red bricks?", a: "Fly Ash bricks offer superior compressive strength, perfect uniform shapes, lower water absorption, and are completely eco-friendly as they use industrial byproducts instead of vital topsoil." },
-              { q: "Do you supply materials for large commercial projects?", a: "Absolutely. We supply both retail and bulk wholesale orders. Our large-scale production yard ensures we can meet demands for massive infrastructure or commercial builds easily." },
-              { q: "What is your typical delivery timeframe?", a: "For standard orders within Erode and near surrounding areas, we usually process and dispatch within 24-48 hours. Large bulk quantities can be scheduled according to project pace." },
-              { q: "Can I get a custom quote for mixed materials?", a: "Yes! You can use our WhatsApp quoting tool on this site, or contact our sales team directly to bundle bricks, m-sand, and cement for the best comprehensive pricing." }
-            ].map((faq, i) => (
+            {faqs.map((faq, i) => (
               <details key={i} className="group bg-white rounded-3xl border border-gray-100 shadow-sm text-brand-secondary [&_summary::-webkit-details-marker]:hidden overflow-hidden">
                 <summary className="cursor-pointer p-6 md:p-8 font-bold text-lg flex items-center justify-between gap-4 select-none hover:text-brand-primary transition-colors">
                   {faq.q}

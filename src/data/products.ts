@@ -5,6 +5,10 @@ export type Product = {
   description: string;
   features: string[];
   galleryImages?: string[];
+  ogTitle?: string;
+  ogDescription?: string;
+  ogTagline?: string;
+  ogAccent?: string;
 };
 
 export const manufacturedProducts: Product[] = [
@@ -13,14 +17,22 @@ export const manufacturedProducts: Product[] = [
     slug: "flyash-bricks",
     image: "/images/flyash_bricks_1773246878607.png",
     description: "Eco-friendly bricks made from industrial byproducts. High strength and smooth finishing.",
-    features: ["High compressive strength", "Uniform shape", "Eco-friendly", "Reduced plastering cost"]
+    features: ["High compressive strength", "Uniform shape", "Eco-friendly", "Reduced plastering cost"],
+    ogTitle: "Premium Flyash Bricks | High Strength Eco Bricks",
+    ogDescription: "Buy premium flyash bricks for durable and eco-friendly construction. Bulk supply available in Erode and Coimbatore.",
+    ogTagline: "High Strength • Eco Friendly",
+    ogAccent: "#B45309"
   },
   {
     name: "Interlock Bricks",
     slug: "interlock-bricks",
     image: "/images/interlock-bricks-erode-high-strength.jpg",
     description: "High-strength interlock bricks for durable, eco-friendly flooring, pathways, and outdoor paving.",
-    features: ["Heavy load bearing", "Easy to install", "Reusable", "Aesthetic finish"]
+    features: ["Heavy load bearing", "Easy to install", "Reusable", "Aesthetic finish"],
+    ogTitle: "Interlock Paver Blocks | Durable Stylish Finish",
+    ogDescription: "Choose premium interlock paver blocks for durable pathways and modern outdoor finishes. Bulk supply across Erode and Coimbatore.",
+    ogTagline: "Durable • Stylish Finish",
+    ogAccent: "#1D4ED8"
   },
   {
     name: "Solid Bricks (4\", 6\", 8\")",
@@ -48,7 +60,11 @@ export const dealerProducts: Product[] = [
     slug: "m-sand",
     image: "/images/msand_pile_1773246182968.png",
     description: "Manufactured sand specifically for concrete to achieve highest compressive strength.",
-    features: ["High strength", "Silt free", "Economical", "Well graded"]
+    features: ["High strength", "Silt free", "Economical", "Well graded"],
+    ogTitle: "Premium M-Sand | Perfect for Concrete Strength",
+    ogDescription: "Premium M-sand for concrete with high compressive strength and low silt content. Trusted bulk supplier in Erode and Coimbatore.",
+    ogTagline: "Perfect for Concrete",
+    ogAccent: "#0F766E"
   },
   {
     name: "P-Sand",
