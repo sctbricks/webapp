@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { PDFArray, PDFDocument, PDFName, PDFString, StandardFonts, rgb, type PDFImage } from "pdf-lib";
+import { PDFArray, PDFDocument, PDFName, PDFString, StandardFonts, rgb, type PDFImage, type PDFObject, type PDFRef } from "pdf-lib";
 
 type ReportPayload = {
   id?: string;
@@ -124,10 +124,15 @@ function addClickableLink(
   height: number,
   url: string,
 ) {
-  const context = (pdfDoc as unknown as { context: { obj: (v: unknown) => unknown; register: (v: unknown) => unknown } }).context;
+  const context = (pdfDoc as unknown as {
+    context: {
+      obj: (v: unknown) => PDFObject;
+      register: (v: PDFObject) => PDFRef;
+    };
+  }).context;
   const pageNode = page.node as unknown as {
-    get: (name: unknown) => unknown;
-    set: (name: unknown, value: unknown) => void;
+    get: (name: PDFName) => PDFObject | undefined;
+    set: (name: PDFName, value: PDFObject) => void;
   };
 
   const linkAnnot = context.obj({
@@ -385,7 +390,8 @@ export async function POST(request: Request) {
   addClickableLink(pdfDoc, page5, 84, 139, 460, 12, "https://sctbricks.com/areas-we-serve");
 
   const pdfBytes = await pdfDoc.save();
-  return new Response(pdfBytes, {
+  const pdfBody = Uint8Array.from(pdfBytes);
+  return new Response(pdfBody, {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename="${filename}"`,
