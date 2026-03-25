@@ -10,10 +10,10 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://sctbricks.com'),
   title: {
-    default: "SCT Bricks - Bricks Manufacturer and Supplier in Erode",
+    default: "SCT Bricks | Premium Flyash & Interlock Bricks Manufacturer in Erode, Tamil Nadu",
     template: "%s | SCT Bricks",
   },
-  description: "SCT Bricks is a leading bricks manufacturer and construction materials supplier in Erode, Tamil Nadu. We supply Fly Ash Bricks, Interlock Bricks, Solid Bricks, Hollow Blocks, M-Sand, P-Sand, Jalli, Chips, and Cement.",
+  description: "Leading manufacturer and supplier of premium Flyash Bricks, Interlock Bricks, M-Sand, P-Sand, Cement, Jalli and aggregates in Erode. Durable, eco-friendly construction materials.",
   keywords: ["SCT Bricks", "Bricks Manufacturer Erode", "Bricks Supplier Erode", "Fly Ash Bricks", "Interlock Bricks", "Solid Bricks", "Hollow Blocks", "M-Sand", "P-Sand", "Jalli", "Chips", "Construction Materials Tamil Nadu", "Cement Supplier Erode"],
   authors: [{ name: "SCT Bricks" }],
   creator: "SCT Bricks",
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://sctbricks.com",
     siteName: "SCT Bricks",
-    title: "SCT Bricks - Bricks Manufacturer and Supplier in Erode",
-    description: "Trusted supplier of Fly Ash Bricks, Interlock Bricks, Solid Bricks, Hollow Blocks, M-Sand, P-Sand, Jalli, Chips, and Cement in Erode.",
+    title: "SCT Bricks | Premium Flyash & Interlock Bricks Manufacturer in Erode, Tamil Nadu",
+    description: "Leading manufacturer and supplier of premium Flyash Bricks, Interlock Bricks, M-Sand, P-Sand, Cement, Jalli and aggregates in Erode.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SCT Bricks - Bricks Manufacturer in Erode",
-    description: "Premium Fly Ash Bricks, Interlock Bricks, Solid Bricks, Hollow Blocks, M-Sand, P-Sand, and more in Erode.",
+    title: "SCT Bricks | Flyash & Interlock Bricks in Erode",
+    description: "Premium Flyash Bricks, Interlock Bricks, M-Sand, P-Sand, Cement and aggregates supplier in Erode, Tamil Nadu.",
   },
 };
 

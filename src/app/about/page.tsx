@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteNavbar from "@/components/SiteNavbar";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About SCT Bricks in Erode",
   description:
-    "Learn about SCT Bricks, a trusted bricks manufacturer and supplier in Erode offering high-strength, eco-friendly construction materials.",
+    "Learn about SCT Bricks, a trusted Flyash and Interlock Bricks manufacturer in Erode supplying high-strength, eco-friendly construction materials across Tamil Nadu.",
   alternates: {
     canonical: "/about",
   },
@@ -22,6 +24,7 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-white">
+      <SiteNavbar />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -40,6 +43,7 @@ export default function AboutPage() {
           <Link href="/" className="px-6 py-3 rounded-full font-semibold border border-gray-300 text-gray-700">Back to Home</Link>
         </div>
       </section>
+      <SiteFooter />
     </main>
   );
 }

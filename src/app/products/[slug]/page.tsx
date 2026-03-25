@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { Metadata } from "next";
+import SiteNavbar from "@/components/SiteNavbar";
+import SiteFooter from "@/components/SiteFooter";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -20,10 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = allProducts.find((p) => p.slug === slug);
   if (!product) return {};
   const productUrl = `https://sctbricks.com/products/${product.slug}`;
-  const seoTitle = product.ogTitle ?? `${product.name} Supplier in Erode | SCT Bricks`;
+  const seoTitle = `${product.name} in Erode | High-Strength Construction Materials | SCT Bricks`;
   const seoDescription =
     product.ogDescription ??
-    `${product.description} Bulk supply available from SCT Bricks in Erode and Coimbatore, Tamil Nadu.`;
+    `${product.description} Available in Erode and Perundurai with bulk supply and delivery support from SCT Bricks.`;
   const imageAlt = `${product.name} supplied by SCT Bricks in Erode`;
   const ogImageUrl = `${productUrl}/opengraph-image`;
 
@@ -71,6 +73,48 @@ export default async function ProductPage({ params }: Props) {
   const whatsappMessage = `Hello SCT Bricks, I'm interested in ${product.name}. Please share more details and pricing.`;
   const productUrl = `https://sctbricks.com/products/${product.slug}`;
   const productImages = product.galleryImages?.length ? product.galleryImages : [product.image];
+  const relatedProducts = allProducts
+    .filter((item) => item.slug !== product.slug)
+    .slice(0, 3);
+  const priceText = product.priceRange
+    ? `Rs.${product.priceRange.low.toLocaleString("en-IN")}-Rs.${product.priceRange.high.toLocaleString("en-IN")} ${product.priceRange.unit}`
+    : "Price on request";
+  const technicalSpecs =
+    product.technicalSpecs ??
+    [
+      { label: "Material Quality", value: "Consistent supply-grade quality" },
+      { label: "Area Served", value: "Erode and Perundurai" },
+    ];
+  const standards = product.standards ?? ["Quality checked before dispatch"];
+  const deliveryInfo =
+    product.deliveryInfo ??
+    "Delivery support available in Erode and Perundurai based on order volume and route.";
+  const calculatorTips =
+    product.slug === "flyash-bricks" || product.slug.includes("brick") || product.slug.includes("blocks")
+      ? [
+          "Brick estimate formula: Wall area (sq ft) / 0.75 = approximate bricks needed (single layer).",
+          "Add 5% wastage for handling and breakage.",
+          "Example: 1000 sq ft / 0.75 = 1333 bricks; with 5% wastage ≈ 1400 bricks.",
+        ]
+      : [
+          "Sand/aggregate estimate: 1 cubic meter ≈ 1.75 tons.",
+          "For 100 sq ft floor at 4 inch thickness: volume ≈ 0.31 m³.",
+          "Material required: 0.31 x 1.75 ≈ 0.54 tons.",
+        ];
+  const productFaqs = [
+    {
+      q: `What is the price of ${product.name} in Erode and Perundurai?`,
+      a: `${product.name} is typically supplied at ${priceText}. Final pricing depends on quantity, loading pattern, and delivery distance.`,
+    },
+    {
+      q: `Is ${product.name} suitable for residential and commercial projects?`,
+      a: `Yes. ${product.name} is supplied for both residential and commercial construction. We support bulk quantities and planned dispatch for ongoing projects.`,
+    },
+    {
+      q: `Do you provide delivery support for ${product.name}?`,
+      a: `${deliveryInfo}`,
+    },
+  ];
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -84,40 +128,55 @@ export default async function ProductPage({ params }: Props) {
     category: "Construction Material",
     url: productUrl,
     offers: {
-      "@type": "Offer",
+      "@type": product.priceRange ? "AggregateOffer" : "Offer",
       availability: "https://schema.org/InStock",
       priceCurrency: "INR",
+      areaServed: ["Erode", "Perundurai"],
+      lowPrice: product.priceRange ? String(product.priceRange.low) : undefined,
+      highPrice: product.priceRange ? String(product.priceRange.high) : undefined,
+      offerCount: product.priceRange ? "1" : undefined,
       seller: {
         "@type": "Organization",
         name: "SCT Bricks",
       },
     },
+    additionalProperty: technicalSpecs.map((spec) => ({
+      "@type": "PropertyValue",
+      name: spec.label,
+      value: spec.value,
+    })),
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://sctbricks.com/" },
+      { "@type": "ListItem", position: 2, name: "Products", item: "https://sctbricks.com/#products" },
+      { "@type": "ListItem", position: 3, name: product.name, item: productUrl },
+    ],
   };
 
   return (
     <main className="min-h-screen bg-white">
+      <SiteNavbar />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      {/* Navbar with Back Link */}
-      <nav className="fixed top-0 w-full z-50 glass-panel border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-3">
-            <Image src="/images/PHOTO-2025-11-28-17-35-34-removebg-preview.png" alt="SCT Bricks Logo" width={40} height={40} className="w-10 h-10 rounded-full object-cover" />
-            <div className="flex flex-col">
-              <span className="text-lg leading-none font-black text-brand-primary tracking-tighter">SCT</span>
-              <span className="text-xs leading-none font-light text-brand-secondary tracking-widest">BRICKS</span>
-            </div>
-          </Link>
-          <Link href="/#products" className="text-sm font-medium hover:text-brand-primary transition-colors flex items-center gap-2">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-            Back to Products
-          </Link>
-        </div>
-      </nav>
-
-      <div className="pt-32 pb-20 max-w-7xl mx-auto px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="py-12 md:py-16 max-w-7xl mx-auto px-6">
+        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-500">
+          <ol className="flex items-center gap-2 flex-wrap">
+            <li><Link href="/" className="hover:text-brand-primary">Home</Link></li>
+            <li>/</li>
+            <li><Link href="/#products" className="hover:text-brand-primary">Products</Link></li>
+            <li>/</li>
+            <li className="text-brand-secondary font-medium">{product.name}</li>
+          </ol>
+        </nav>
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
           <div className="space-y-4">
@@ -158,6 +217,9 @@ export default async function ProductPage({ params }: Props) {
               <p className="text-xl text-gray-600 leading-relaxed">
                 {product.description}
               </p>
+              <p className="mt-3 text-sm font-semibold text-brand-primary">
+                Available in Erode and Perundurai
+              </p>
             </div>
 
             <div className="space-y-4">
@@ -172,6 +234,50 @@ export default async function ProductPage({ params }: Props) {
               </div>
             </div>
 
+            <div className="p-5 rounded-2xl border border-gray-200 bg-brand-light/30">
+              <h3 className="text-xl font-bold text-brand-secondary mb-2">Price Range</h3>
+              <p className="text-lg font-semibold text-brand-primary">{priceText}</p>
+              <p className="text-sm text-gray-600 mt-2">{deliveryInfo}</p>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-secondary">Technical Specifications</h3>
+              <div className="overflow-hidden rounded-2xl border border-gray-200">
+                <table className="w-full text-sm">
+                  <tbody>
+                    {technicalSpecs.map((spec) => (
+                      <tr key={spec.label} className="odd:bg-white even:bg-gray-50">
+                        <th className="text-left px-4 py-3 font-semibold text-brand-secondary w-1/2">{spec.label}</th>
+                        <td className="px-4 py-3 text-gray-700">{spec.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-secondary">Standards & Compliance</h3>
+              <ul className="grid gap-2">
+                {standards.map((standard) => (
+                  <li key={standard} className="p-3 rounded-xl border border-gray-200 text-gray-700 bg-white">
+                    {standard}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-secondary">Quantity & Cost Tips</h3>
+              <ul className="grid gap-2">
+                {calculatorTips.map((tip) => (
+                  <li key={tip} className="p-3 rounded-xl border border-gray-200 text-gray-700 bg-white">
+                    {tip}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div className="pt-8 border-t border-gray-100 flex flex-col gap-4">
               <WhatsAppButton
                 message={whatsappMessage}
@@ -183,16 +289,46 @@ export default async function ProductPage({ params }: Props) {
                 Contact us for bulk orders and delivery estimates.
               </p>
             </div>
+
+            <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-xl font-bold text-brand-secondary mb-4">Related Products</h3>
+              <div className="flex flex-wrap gap-3">
+                {relatedProducts.map((item) => (
+                  <Link
+                    key={item.slug}
+                    href={`/products/${item.slug}`}
+                    className="px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:text-brand-primary hover:border-brand-primary"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+              <Link
+                href="/guides/flyash-bricks-vs-red-bricks"
+                className="inline-block mt-4 text-sm font-semibold text-brand-primary hover:underline"
+              >
+                Read: Flyash Bricks vs Red Bricks comparison guide
+              </Link>
+            </div>
+
+            <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-xl font-bold text-brand-secondary mb-4">FAQs</h3>
+              <div className="space-y-3">
+                {productFaqs.map((faq, idx) => (
+                  <details key={idx} className="rounded-xl border border-gray-200 bg-white">
+                    <summary className="cursor-pointer px-4 py-3 font-semibold text-brand-secondary">
+                      {faq.q}
+                    </summary>
+                    <p className="px-4 pb-4 text-gray-700">{faq.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Footer (Simplified) */}
-      <footer className="bg-brand-dark text-white py-12 mt-20">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p>© {new Date().getFullYear()} SCT Bricks. Quality Builders Choose SCT.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

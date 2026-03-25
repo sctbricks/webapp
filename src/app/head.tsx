@@ -39,6 +39,7 @@ export default function Head() {
     },
     areaServed: ["Erode", "Coimbatore", "Tamil Nadu"],
     priceRange: "₹₹",
+    openingHours: "Mo-Su 08:00-20:00",
     contactPoint: [
       {
         "@type": "ContactPoint",

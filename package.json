@@ -1,6 +1,5 @@
 {
   "name": "sctbricks.com",
-
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,6 +10,7 @@
   },
   "dependencies": {
     "next": "16.1.6",
+    "nodemailer": "^8.0.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
