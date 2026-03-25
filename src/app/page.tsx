@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import WhatsAppButton, { getWhatsAppUrl } from "@/components/WhatsAppButton";
+import SiteFooter from "@/components/SiteFooter";
 
 import { manufacturedProducts, dealerProducts, allProducts } from "@/data/products";
 
@@ -47,8 +48,9 @@ export default function Home() {
       { "@type": "SiteNavigationElement", position: 1, name: "Home", url: "https://sctbricks.com/" },
       { "@type": "SiteNavigationElement", position: 2, name: "About", url: "https://sctbricks.com/about" },
       { "@type": "SiteNavigationElement", position: 3, name: "Services", url: "https://sctbricks.com/services" },
-      { "@type": "SiteNavigationElement", position: 4, name: "Contact", url: "https://sctbricks.com/contact" },
-      { "@type": "SiteNavigationElement", position: 5, name: "Products", url: "https://sctbricks.com/#products" },
+      { "@type": "SiteNavigationElement", position: 4, name: "Blogs", url: "https://sctbricks.com/guides" },
+      { "@type": "SiteNavigationElement", position: 5, name: "Contact", url: "https://sctbricks.com/contact" },
+      { "@type": "SiteNavigationElement", position: 6, name: "Products", url: "https://sctbricks.com/#products" },
     ],
   };
   const faqSchema = {
@@ -100,7 +102,8 @@ export default function Home() {
             <Link href="/about" className="text-sm font-medium hover:text-brand-primary transition-colors">About</Link>
             <a href="#products" className="text-sm font-medium hover:text-brand-primary transition-colors">Products</a>
             <Link href="/services" className="text-sm font-medium hover:text-brand-primary transition-colors">Services</Link>
-            <Link href="/estimate-calculator" className="text-sm font-medium hover:text-brand-primary transition-colors">Brick Calculator</Link>
+            <Link href="/guides" className="text-sm font-medium hover:text-brand-primary transition-colors">Blogs</Link>
+            <Link href="/brick-calculator-india" className="text-sm font-medium hover:text-brand-primary transition-colors">Brick Calculator</Link>
             <Link href="/areas-we-serve" className="text-sm font-medium hover:text-brand-primary transition-colors">Areas We Serve</Link>
             <Link href="/contact" className="text-sm font-medium hover:text-brand-primary transition-colors">Contact</Link>
             <WhatsAppButton
@@ -162,7 +165,8 @@ export default function Home() {
             <Link href="/about" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">About</Link>
             <a href="#products" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Products</a>
             <Link href="/services" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Services</Link>
-            <Link href="/estimate-calculator" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Brick Calculator</Link>
+            <Link href="/guides" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Blogs</Link>
+            <Link href="/brick-calculator-india" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Brick Calculator</Link>
             <Link href="/areas-we-serve" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Areas We Serve</Link>
             <Link href="/contact" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Contact</Link>
           </div>
@@ -207,7 +211,7 @@ export default function Home() {
                 label="Get Price on WhatsApp"
                 className="text-lg px-8 py-4 shadow-xl"
               />
-              <Link href="/estimate-calculator" className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-lg">
+              <Link href="/brick-calculator-india" className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-lg">
                 Try Cost Calculator
               </Link>
               <a href="#products" className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white transition-all text-lg">
@@ -515,75 +519,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-brand-dark text-white py-20 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 text-center md:text-left">
-            <div>
-              <div className="flex items-center justify-center md:justify-start space-x-4 mb-8">
-                <Image src="/images/PHOTO-2025-11-28-17-35-34-removebg-preview.png" alt="SCT Bricks Logo" width={64} height={64} className="w-16 h-16 rounded-full object-cover shadow-lg border-2 border-white/10" />
-                <div className="flex flex-col text-left mt-1">
-                  <span className="text-3xl leading-none font-black text-brand-primary tracking-tighter italic">SCT</span>
-                  <span className="text-xl leading-none font-light text-white tracking-widest mt-1">BRICKS</span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 mb-8">
-                <a
-                  href="https://www.justdial.com/Erode/Sct-Bricks-Opposite-Nandha-Medical-College-Mettukadai/9999PX424-X424-231118130951-K9V5_BZDET"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center md:justify-start gap-3 w-fit mx-auto md:mx-0 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
-                >
-                  <span className="font-bold text-white group-hover:text-brand-primary transition-colors">View on Justdial</span>
-                </a>
-                <a
-                  href="https://linklane.in/shrichinnammantraders"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center md:justify-start gap-3 w-fit mx-auto md:mx-0 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
-                >
-                  <span className="font-bold text-white group-hover:text-brand-primary transition-colors">View on Linklane.in</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-16 mx-auto md:mx-0">
-              <div>
-                <h5 className="font-bold mb-6 uppercase tracking-[0.2em] text-xs text-white/30">Explore</h5>
-                <ul className="space-y-4 text-white/50">
-                  <li><Link href="/" className="hover:text-brand-primary transition-colors">Home</Link></li>
-                  <li><Link href="/about" className="hover:text-brand-primary transition-colors">About</Link></li>
-                  <li><Link href="/services" className="hover:text-brand-primary transition-colors">Services</Link></li>
-                  <li><Link href="/areas-we-serve" className="hover:text-brand-primary transition-colors">Areas We Serve</Link></li>
-                  <li><a href="#products" className="hover:text-brand-primary transition-colors">Products</a></li>
-                </ul>
-              </div>
-              <div>
-                <h5 className="font-bold mb-6 uppercase tracking-[0.2em] text-xs text-white/30">Support</h5>
-                <ul className="space-y-4 text-white/50">
-                  <li><Link href="/contact" className="hover:text-brand-primary transition-colors">Contact</Link></li>
-                  <li><a href="https://maps.app.goo.gl/ST9gPvyWGAcztkjq9" target="_blank" rel="noopener noreferrer" className="hover:text-brand-primary transition-colors">Directions</a></li>
-                  <li><Link href="/contact" className="hover:text-brand-primary transition-colors">Pricing</Link></li>
-                  <li><Link href="/#faq" className="hover:text-brand-primary transition-colors">FAQ</Link></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-white/20 gap-6">
-            <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-              <p>© {new Date().getFullYear()} SCT Bricks. Designed for Excellence.</p>
-              <span className="hidden md:inline text-white/10">|</span>
-              <a href="https://linklane.in" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors group">
-                Verified Business of
-                <span className="font-bold text-white/50 group-hover:text-white transition-colors bg-white/10 px-2 py-1 rounded-md">
-                  Linklane.in
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

@@ -24,7 +24,8 @@ export default function SiteNavbar() {
         <div className="hidden md:flex items-center space-x-8">
           <Link href="/about" className="text-sm font-medium hover:text-brand-primary transition-colors">About</Link>
           <Link href="/services" className="text-sm font-medium hover:text-brand-primary transition-colors">Services</Link>
-          <Link href="/estimate-calculator" className="text-sm font-medium hover:text-brand-primary transition-colors">Brick Calculator</Link>
+          <Link href="/guides" className="text-sm font-medium hover:text-brand-primary transition-colors">Blogs</Link>
+          <Link href="/brick-calculator-india" className="text-sm font-medium hover:text-brand-primary transition-colors">Brick Calculator</Link>
           <Link href="/areas-we-serve" className="text-sm font-medium hover:text-brand-primary transition-colors">Areas We Serve</Link>
           <Link href="/contact" className="text-sm font-medium hover:text-brand-primary transition-colors">Contact</Link>
           <WhatsAppButton
@@ -84,7 +85,8 @@ export default function SiteNavbar() {
             <div className="grid gap-3 text-sm font-medium text-slate-800">
               <Link href="/about" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">About</Link>
               <Link href="/services" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Services</Link>
-              <Link href="/estimate-calculator" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Brick Calculator</Link>
+              <Link href="/guides" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Blogs</Link>
+              <Link href="/brick-calculator-india" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Brick Calculator</Link>
               <Link href="/areas-we-serve" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Areas We Serve</Link>
               <Link href="/contact" onClick={closeMobileMenu} className="rounded-lg px-3 py-2 hover:bg-slate-100 transition-colors">Contact</Link>
             </div>

@@ -80,6 +80,7 @@ export default function ContactPage() {
           >
             Save Contact Card
           </a>
+          <Link href="/brick-calculator-india" className="px-6 py-3 rounded-full font-semibold border border-brand-primary text-brand-primary">Brick Calculator</Link>
           <Link href="/services" className="px-6 py-3 rounded-full font-semibold border border-brand-primary text-brand-primary">View Services</Link>
         </div>
       </section>

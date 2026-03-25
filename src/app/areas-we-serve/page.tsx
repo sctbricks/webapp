@@ -20,7 +20,7 @@ const serviceAreas = [
     focus: ["Interlock Bricks", "Flyash Bricks", "P-Sand", "Jalli", "Cement"],
   },
   {
-    name: "Modakuruchu",
+    name: "Modakuruchi",
     delivery: "Complete delivery support for all products and construction materials.",
     focus: ["Flyash Bricks", "M-Sand", "P-Sand", "Chips", "Cements (All Brands)"],
   },
@@ -34,7 +34,7 @@ const serviceAreas = [
 const localFaqs = [
   {
     q: "Do you deliver construction materials outside Erode city limits?",
-    a: "Yes. We supply and deliver all products to Perundurai, Bhavani, Modakuruchu, Chennimalai, and nearby locations.",
+    a: "Yes. We supply and deliver all products to Perundurai, Bhavani, Modakuruchi, Chennimalai, and nearby locations.",
   },
   {
     q: "Can I place mixed bulk orders for bricks, sand, and cement?",
@@ -49,7 +49,7 @@ const localFaqs = [
 export const metadata: Metadata = {
   title: "Areas We Serve in and around Erode",
   description:
-    "SCT Bricks supplies and delivers all products across Erode, Perundurai, Bhavani, Modakuruchu, and Chennimalai.",
+    "SCT Bricks supplies and delivers all products across Erode, Perundurai, Bhavani, Modakuruchi, and Chennimalai.",
   alternates: {
     canonical: "/areas-we-serve",
   },
@@ -150,6 +150,9 @@ export default function AreasWeServePage() {
           <div className="flex flex-wrap gap-4">
             <Link href="/contact" className="px-6 py-3 rounded-full font-semibold bg-brand-primary text-white">
               Contact Sales Team
+            </Link>
+            <Link href="/brick-calculator-india" className="px-6 py-3 rounded-full font-semibold border border-brand-primary text-brand-primary">
+              Brick Calculator
             </Link>
             <Link href="/#products" className="px-6 py-3 rounded-full font-semibold border border-brand-primary text-brand-primary">
               Browse Products

@@ -51,6 +51,9 @@ export default function FlyashVsRedGuidePage() {
       <SiteNavbar />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="max-w-5xl mx-auto px-6 py-16">
+        <Link href="/guides" className="inline-flex mb-6 px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold text-gray-700 hover:border-brand-primary hover:text-brand-primary transition-colors">
+          Back to Blogs
+        </Link>
         <h1 className="text-4xl md:text-5xl font-black text-brand-secondary mb-5">
           Flyash Bricks vs Red Bricks: Complete Comparison
         </h1>

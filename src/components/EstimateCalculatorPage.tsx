@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SiteNavbar from "@/components/SiteNavbar";
 import SiteFooter from "@/components/SiteFooter";
@@ -166,9 +167,15 @@ export default function EstimateCalculatorPage() {
           <p className="text-slate-700 text-lg max-w-3xl mt-3">
             Enter wall dimensions in feet, pick thickness and brick type, then get an instant estimate. Download a detailed report after quick lead capture.
           </p>
+          <a
+            href="#calculator-tool"
+            className="inline-flex mt-5 px-6 py-3 rounded-full font-semibold bg-brand-primary text-white hover:bg-green-900 transition-colors"
+          >
+            Get Exact Brick Count
+          </a>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-start">
+        <div id="calculator-tool" className="grid lg:grid-cols-2 gap-6 md:gap-8 items-start">
           <div className="rounded-[28px] border border-emerald-100/80 bg-white/80 p-5 sm:p-6 md:p-8 shadow-[0_18px_45px_-28px_rgba(6,78,59,0.55)] backdrop-blur-xl">
             <div className="mb-5">
               <h2 className="text-2xl font-bold text-brand-secondary">Step 1: Project Input</h2>
@@ -277,6 +284,26 @@ export default function EstimateCalculatorPage() {
         </div>
       </section>
 
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-10">
+        <div className="rounded-2xl border border-gray-200 bg-white p-5 md:p-6">
+          <h2 className="text-2xl font-bold text-brand-secondary mb-3">How This Brick Calculator Works</h2>
+          <div className="grid md:grid-cols-3 gap-3 text-sm">
+            <div className="rounded-xl border border-gray-200 p-4 bg-gray-50">
+              <p className="font-semibold text-brand-secondary mb-1">1) Input</p>
+              <p className="text-gray-700">Enter wall length, height, thickness, and brick type.</p>
+            </div>
+            <div className="rounded-xl border border-gray-200 p-4 bg-gray-50">
+              <p className="font-semibold text-brand-secondary mb-1">2) Output</p>
+              <p className="text-gray-700">Get instant quantity and estimated cost range.</p>
+            </div>
+            <div className="rounded-xl border border-gray-200 p-4 bg-gray-50">
+              <p className="font-semibold text-brand-secondary mb-1">3) Convert</p>
+              <p className="text-gray-700">Download detailed estimate PDF and request final pricing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {showLeadForm && calculation && (
         <div className="fixed inset-0 z-[70] bg-emerald-950/55 backdrop-blur-sm flex items-start sm:items-center justify-center px-4 py-6 overflow-y-auto">
           <div className="w-full max-w-md bg-white rounded-3xl p-5 sm:p-6 shadow-[0_35px_90px_-30px_rgba(0,0,0,0.6)] border border-emerald-100 max-h-[90vh] overflow-y-auto">
@@ -337,6 +364,83 @@ export default function EstimateCalculatorPage() {
           >
             Need expert calculation?
           </a>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
+        <div className="rounded-3xl border border-gray-200 bg-white p-6 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-secondary mb-4">
+            Brick Calculation Guide for House Construction
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            This brick calculation tool helps you estimate the number of bricks required for wall construction in feet. It works for fly ash brick calculator needs, interlock brick calculator planning, and brick cost calculator india use cases for residential and commercial sites.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Common searches like how many bricks needed for 100 sq ft wall, bricks required for 10x10 room, and bricks required per square foot depend on wall thickness, brick type, and wastage. Use this wall brick calculator to get a practical estimate before placing your material order.
+          </p>
+          <h3 className="text-xl font-bold text-brand-secondary mb-2">How to calculate bricks for wall in feet</h3>
+          <ol className="list-decimal pl-5 space-y-2 text-gray-700">
+            <li>Enter wall length and height in feet.</li>
+            <li>Select wall thickness (4 inch, 6 inch, or 9 inch).</li>
+            <li>Choose brick type (Flyash, Interlock, or Solid).</li>
+            <li>Review quantity and approximate cost range instantly.</li>
+            <li>Download your detailed estimate and request exact pricing.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-14">
+        <h2 className="text-2xl md:text-3xl font-bold text-brand-secondary mb-5">Brick Calculator FAQs</h2>
+        <div className="space-y-4">
+          {[
+            {
+              q: "How many bricks are needed for a 100 sq ft wall?",
+              a: "It varies by wall thickness and brick type. This bricks required calculator applies practical construction factors and wastage to give you a more realistic estimate.",
+            },
+            {
+              q: "Can I use this for brick estimation calculator India requirements?",
+              a: "Yes. The tool is built for India-focused wall dimension inputs in feet and gives an approximate budget range for project planning.",
+            },
+            {
+              q: "Does this support fly ash and interlock brick quantity calculation?",
+              a: "Yes. You can switch between Flyash, Interlock, and Solid options to compare quantity and cost quickly.",
+            },
+            {
+              q: "Can I get final pricing after estimate?",
+              a: "Yes. Use the Get Final Pricing on WhatsApp button after calculation and our team will share current rates and delivery details.",
+            },
+          ].map((item) => (
+            <details key={item.q} className="rounded-2xl border border-gray-200 bg-white p-5">
+              <summary className="cursor-pointer font-bold text-brand-secondary">{item.q}</summary>
+              <p className="mt-3 text-gray-700 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-14">
+        <h2 className="text-2xl md:text-3xl font-bold text-brand-secondary mb-5">Complete Brick Calculation Guides</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Link href="/guides/brick-calculator-india-guide" className="rounded-2xl border border-gray-200 p-5 bg-white hover:border-brand-primary transition-colors">
+            <h3 className="font-bold text-brand-secondary mb-1">Brick Calculation Formula Guide</h3>
+            <p className="text-sm text-gray-700">Understand formula, factors, and practical quantity planning.</p>
+          </Link>
+          <Link href="/guides/bricks-per-square-foot" className="rounded-2xl border border-gray-200 p-5 bg-white hover:border-brand-primary transition-colors">
+            <h3 className="font-bold text-brand-secondary mb-1">Bricks Per Sq Ft Guide</h3>
+            <p className="text-sm text-gray-700">Quick answers and exact ranges for common wall sizes.</p>
+          </Link>
+          <Link href="/guides/brick-cost-estimation-india" className="rounded-2xl border border-gray-200 p-5 bg-white hover:border-brand-primary transition-colors">
+            <h3 className="font-bold text-brand-secondary mb-1">Brick Cost Estimation Guide</h3>
+            <p className="text-sm text-gray-700">Estimate brick budget with transport, labour, and wastage.</p>
+          </Link>
+          <Link href="/guides/fly-ash-brick-calculator" className="rounded-2xl border border-gray-200 p-5 bg-white hover:border-brand-primary transition-colors">
+            <h3 className="font-bold text-brand-secondary mb-1">Fly Ash Brick Calculator Guide</h3>
+            <p className="text-sm text-gray-700">Compare fly ash quantity and cost against standard brick assumptions.</p>
+          </Link>
+          <Link href="/guides/bricks-required-for-house-construction" className="rounded-2xl border border-gray-200 p-5 bg-white hover:border-brand-primary transition-colors md:col-span-2">
+            <h3 className="font-bold text-brand-secondary mb-1">House Construction Brick Estimate Guide</h3>
+            <p className="text-sm text-gray-700">Estimate bricks required for 1000, 1500, and 2000 sq ft homes.</p>
+          </Link>
         </div>
       </section>
 

@@ -44,6 +44,7 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/contact" className="px-6 py-3 rounded-full font-semibold bg-brand-primary text-white">Get a Quote</Link>
+              <Link href="/brick-calculator-india" className="px-6 py-3 rounded-full font-semibold border border-brand-primary text-brand-primary">Brick Calculator</Link>
               <Link href="/#products" className="px-6 py-3 rounded-full font-semibold border border-brand-primary text-brand-primary">Browse Products</Link>
               <Link href="/areas-we-serve" className="px-6 py-3 rounded-full font-semibold border border-gray-300 text-gray-700">Areas We Serve</Link>
             </div>
