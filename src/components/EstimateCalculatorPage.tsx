@@ -137,10 +137,33 @@ export default function EstimateCalculatorPage() {
         }),
       }).catch(() => null);
 
+      const reportResponse = await fetch("/api/report-download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: reportId,
+          leadName,
+          leadPhone,
+          leadLocation,
+          length,
+          height,
+          thickness,
+          brickType: calculation.config.label,
+          totalUnits: calculation.totalUnits,
+          low: calculation.low,
+          high: calculation.high,
+        }),
+      });
+      if (!reportResponse.ok) {
+        throw new Error("Report generation failed");
+      }
+      const reportBlob = await reportResponse.blob();
+      const reportUrl = URL.createObjectURL(reportBlob);
       const a = document.createElement("a");
-      a.href = `/api/report-download?id=${reportId}`;
+      a.href = reportUrl;
       a.download = filename;
       a.click();
+      URL.revokeObjectURL(reportUrl);
 
       setShowLeadForm(false);
       setTimeout(() => router.push("/#products"), 700);
