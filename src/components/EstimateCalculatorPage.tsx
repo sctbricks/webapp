@@ -149,6 +149,8 @@ export default function EstimateCalculatorPage() {
           height,
           thickness,
           brickType: calculation.config.label,
+          area: calculation.area,
+          factor: calculation.factor,
           totalUnits: calculation.totalUnits,
           low: calculation.low,
           high: calculation.high,
